@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Регистрация</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>ForumCode</title>
     <style>
         .wrapper{
             display: flex;
@@ -23,7 +23,6 @@
     </style>
 </head>
 <body>
-
 <div class="wrapper">
     <div class="form-block">
         @if($errors->any())
@@ -35,23 +34,21 @@
                 </ul>
             </div>
         @endif
-        <form action="{{route('register.store')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('mail.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Имя</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Иван" value="{{old('name')}}">
+                <label for="exampleInputPassword1" class="form-label">Адрес электронной формы</label>
+                <input type="email" class="form-control" id="email" name="email">
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Адрес электронной почты</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="ivanov@gmail.com" value="{{old('email')}}">
-                <div id="emailHelp" class="form-text" style="color:gray;">Мы никогда не будем делиться вашей электронной почтой с кем-либо еще.
-                </div>
+                <label for="exampleFormControlTextarea1" class="form-label">Ваш отзыв</label>
+                <textarea class="form-control" id="reviews" name="reviews" rows="3"></textarea>
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Пароль</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <label for="exampleFormControlTextarea1" class="form-label">Фамилия и Имя</label>
+                <input type="text" class="form-control" id="name" name="name">
             </div>
-            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            <button type="submit" class="btn btn-primary">Отправить</button>
         </form>
     </div>
 </div>

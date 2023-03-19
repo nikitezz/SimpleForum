@@ -35,8 +35,9 @@
                     <h4 class="text-white">Контакты</h4>
                     <ul class="list-unstyled">
                         <li><a href="#" class="text-white">Следите за новостями на GitHub</a></li>
-                        <li><a href="#" class="text-white">Мы в Instagram</a></li>
-                        <li><a href="#" class="text-white">Напишите нам на почту</a></li>
+                        <li><a href="https://instagram.com/nikitezzz?igshid=YmMyMTA2M2Y=" class="text-white">Мы в Instagram</a></li>
+                        <li><a href="" class="text-white">Напишите нам</a></li>
+                        <li><a href="{{route('mail')}}" class="text-white">Оставьте свой отзыв</a></li>
                         <hr style="background-color: white;">
                         @if(\Illuminate\Support\Facades\Auth::check())
                             <li><a href="{{route('logout')}}" class="text-white">Выйти с аккаунта</a></li>
@@ -60,11 +61,14 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
-        @if(\Illuminate\Support\Facades\Auth::check())
-            <a href="{{route('profile')}}"><p style="color: white;" >{{auth()->user()->name}}</p></a>
-        @else
-            <p style="color: white;">Гость</p>
-        @endif
+        <div class="mt-2">
+            @if(\Illuminate\Support\Facades\Auth::check())
+
+                <a href="{{route('profile')}}"><p style="color: white;" >{{auth()->user()->name}}</p></a>
+            @else
+                <p style="color: white;">Гость</p>
+            @endif
+        </div>
     </div>
 </header>
     <main role="main">
@@ -76,36 +80,40 @@
                 @if(\Illuminate\Support\Facades\Auth::check())
                     <a href="{{route('create')}}" class="btn btn-primary my-2">Поделиться постом</a>
                 @endif
-                    <a href="#" class="btn btn-secondary my-2">Инструкция</a>
+                    <a href="{{route('reviews')}}" class="btn btn-secondary my-2">Отзывы</a>
                 </p>
             </div>
         </section>
 
         <div class="album py-5 bg-light">
             <div class="container">
-
-                <div class="row">
-                    @foreach($post as $posts)
-                    <div class="col-md-6">
-                        <div class="card mb-5 box-shadow">
-                            <br>
-                            <h5 style="text-align: center">{{$posts->title}}</h5>
-                            <div class="card-body">
-                                <p class="card-text">{{$posts->content}}</p>
-                                <hr>
-                                <p class="card-text">Автор: {{$posts->avtor}}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Смотреть</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Нравится</button>
+                @if(\Illuminate\Support\Facades\Auth::check())
+                    <div class="row">
+                        @foreach($post as $posts)
+                            <div class="col-md-6">
+                                <div class="card mb-5 box-shadow">
+                                    <br>
+                                    <h5 style="text-align: center">{{$posts->title}}</h5>
+                                    <div class="card-body">
+                                        <p class="card-text">{{$posts->content}}</p>
+                                        <hr>
+                                        <p class="card-text">Автор: {{$posts->avtor}}</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="alert('Благодарим, что оценили!')">Нравится</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="alert('Идите нахуй, если не нравится!')">Не нравится</button>
+                                            </div>
+                                            <small class="text-muted">{{$posts->getPostDate()}}</small>
+                                        </div>
                                     </div>
-                                    <small class="text-muted">{{$posts->getPostDate()}}</small>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                    @endforeach
-                </div>
+                @else
+                    <h1 class="jumbotron-heading">Для просмотра постов, нужно зарегистрироваться!</h1>
+                @endif
+
             </div>
         </div>
 
