@@ -28,7 +28,7 @@ Route::get('/create',[\App\Http\Controllers\PostsController::class,'index'])->na
 Route::post('/create',[\App\Http\Controllers\PostsController::class,'store'])->name('create.store');
 
 Route::group(['middleware'=>'admin'], function(){
-   Route::get('/admin',[\App\Http\Controllers\AdminController::class,'index']);
+   Route::get('/admin',[\App\Http\Controllers\AdminController::class,'index'])->name('admin');
 });
 Route::get('/profile',[\App\Http\Controllers\ProfileController::class,'index'])->name('profile');
 

@@ -45,7 +45,7 @@
                 <textarea class="form-control" id="content" name="content" rows="3"></textarea>
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Автор (Фамилия и Имя)</label>
+                <label for="exampleFormControlTextarea1" class="form-label">Укажите автора поста</label>
                 <input type="text" class="form-control" id="avtor" name="avtor">
             </div>
             <button type="submit" class="btn btn-primary">Создать</button>

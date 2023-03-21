@@ -46,6 +46,11 @@
                             <li><a href="{{route('register.create')}}" class="text-white">Регистрация</a>
                             <li><a href="{{route('login')}}" class="text-white">Авторизация</a></li>
                         @endif
+                        @if(\Illuminate\Support\Facades\Auth::check() && auth()->user()->is_admin == 1)
+                            <li>
+                                <a href="{{route('admin')}}" class="text-white">Админ панель</a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -84,36 +89,24 @@
                 </p>
             </div>
         </section>
-
         <div class="album py-5 bg-light">
             <div class="container">
                 @if(\Illuminate\Support\Facades\Auth::check())
-                    <div class="row">
-                        @foreach($post as $posts)
-                            <div class="col-md-6">
-                                <div class="card mb-5 box-shadow">
-                                    <br>
-                                    <h5 style="text-align: center">{{$posts->title}}</h5>
-                                    <div class="card-body">
-                                        <p class="card-text">{{$posts->content}}</p>
-                                        <hr>
-                                        <p class="card-text">Автор: {{$posts->avtor}}</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="alert('Благодарим, что оценили!')">Нравится</button>
-                                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="alert('Идите нахуй, если не нравится!')">Не нравится</button>
-                                            </div>
-                                            <small class="text-muted">{{$posts->getPostDate()}}</small>
-                                        </div>
-                                    </div>
-                                </div>
+                    @foreach($post as $posts)
+                        <div class="card mt-4">
+                            <h6 class="card-header">ForumCode</h6>
+                            <div class="card-body">
+                                <h5 class="card-title">{{$posts->title}}</h5>
+                                <p class="card-text">{{$posts->content}}</p>
+                                <p class="card-text">Автор: {{$posts->avtor}}</p>
+                                <a href="#" class="btn btn-primary" onclick="alert('Благодарим, что оценили!')">Нравится</a><br>
+                                <small class="text-muted">{{$posts->getPostDate()}}</small>
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 @else
-                    <h1 class="jumbotron-heading">Для просмотра постов, нужно зарегистрироваться!</h1>
+                    <h3 class="jumbotron-heading">Для просмотра постов, нужно зарегистрироваться!</h3>
                 @endif
-
             </div>
         </div>
 

@@ -49,11 +49,90 @@
             <div class="container">
                 <h1 class="jumbotron-heading">ForumCode</h1>
                 <p class="lead text-muted">Что-то короткое и важное о коллекции ниже — ее содержании, создатели и т. д. Сделайте это кратким и приятным, но не слишком коротким, чтобы люди просто не пропустили его полностью.</p>
-                <a href="{{route('create')}}" class="btn btn-primary my-2">Создать пост</a>
-                <a href="#" class="btn btn-secondary my-2">Инструкция</a>
+                <a href="{{route('home')}}" class="btn btn-primary my-2">На главную</a>
                 </p>
             </div>
         </section>
+        <div class="container">
+{{--            Таблица: пользователи--}}
+            <div class="table-users">
+                <h3 class="jumbotron-heading">Пользователи</h3>
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Почта</th>
+                        <th scope="col">Пароль</th>
+                        <th scope="col">Админка</th>
+                    </tr>
+                    </thead>
+                    @foreach($user as $users)
+                        <tbody>
+                        <tr>
+                            <th scope="row">{{$users->id}}</th>
+                            <td>{{$users->name}}</td>
+                            <td>{{$users->email}}</td>
+                            <td>{{$users->password}}</td>
+                            <td>{{$users->is_admin}}</td>
+                        </tr>
+                        </tbody>
+                    @endforeach
+                </table>
+            </div>
+{{--            Таблица: посты--}}
+            <div class="table-posts">
+                <h3 class="jumbotron-heading">Посты</h3>
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Описание</th>
+                        <th scope="col">Дата создания</th>
+                        <th scope="col">Автор</th>
+                    </tr>
+                    </thead>
+                    @foreach($post as $posts)
+                        <tbody>
+                        <tr>
+                            <th scope="row">{{$posts->id}}</th>
+                            <td>{{$posts->title}}</td>
+                            <td>{{$posts->content}}</td>
+                            <td>{{$posts->created_at}}</td>
+                            <td>{{$posts->avtor}}</td>
+                        </tr>
+                        </tbody>
+                    @endforeach
+                </table>
+            </div>
+{{--Таблица: отзывы--}}
+            <div class="table-reviews">
+                <h3 class="jumbotron-heading">Отзывы</h3>
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Почта</th>
+                        <th scope="col">Имя(кто оставил отзыв)</th>
+                        <th scope="col">Отзыв</th>
+                        <th scope="col">Дата опубликования</th>
+                    </tr>
+                    </thead>
+                    @foreach($review as $reviews)
+                        <tbody>
+                        <tr>
+                            <th scope="row">{{$reviews->id}}</th>
+                            <td>{{$reviews->email}}</td>
+                            <td>{{$reviews->name}}</td>
+                            <td>{{$reviews->reviews}}</td>
+                            <td>{{$reviews->created_at}}</td>
+                        </tr>
+                        </tbody>
+                    @endforeach
+                </table>
+            </div>
+        </div>
     </main>
 
     <footer class="text-muted">
