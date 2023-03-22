@@ -54,6 +54,7 @@
                 <h1 class="jumbotron-heading">Отзывы</h1>
                 <p class="lead text-muted">Что-то короткое и важное о коллекции ниже — ее содержании, создатели и т. д. Сделайте это кратким и приятным, но не слишком коротким, чтобы люди просто не пропустили его полностью.</p>
                 <a href="{{route('home')}}" class="btn btn-secondary my-2">Вернуться на главную</a>
+                <a href="{{route('reviews')}}"  class="btn btn-sm btn-outline-secondary">Оставить отзыв</a>
             </div>
         </section>
 

@@ -19,15 +19,6 @@
                         <h4 class="text-white">О нас</h4>
                         <p class="text-muted">Добавьте информацию об альбоме ниже, авторе или любом другом фоновом контексте. Сократите его до нескольких предложений, чтобы люди могли уловить какую-нибудь информативную информацию. Затем свяжите их с некоторыми сайтами социальных сетей или контактной информацией.</p>
                     </div>
-                    <div class="col-sm-4 offset-md-1 py-4">
-                        <h4 class="text-white">Контакты</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="text-white">Следите за новостями на GitHub</a></li>
-                            <li><a href="#" class="text-white">Мы в Instagram</a></li>
-                            <li><a href="#" class="text-white">Напишите нам на почту</a></li>
-
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -47,7 +38,7 @@
 
         <section class="jumbotron text-center">
             <div class="container">
-                <h1 class="jumbotron-heading">ForumCode</h1>
+                <h1 class="jumbotron-heading">Страница для администратора</h1>
                 <p class="lead text-muted">Что-то короткое и важное о коллекции ниже — ее содержании, создатели и т. д. Сделайте это кратким и приятным, но не слишком коротким, чтобы люди просто не пропустили его полностью.</p>
                 <a href="{{route('home')}}" class="btn btn-primary my-2">На главную</a>
                 </p>
@@ -65,6 +56,7 @@
                         <th scope="col">Почта</th>
                         <th scope="col">Пароль</th>
                         <th scope="col">Админка</th>
+                        <th scope="col">Действие</th>
                     </tr>
                     </thead>
                     @foreach($user as $users)
@@ -75,6 +67,7 @@
                             <td>{{$users->email}}</td>
                             <td>{{$users->password}}</td>
                             <td>{{$users->is_admin}}</td>
+                            <td><img src="{{asset('Images/delete.png')}}" width="20px" height="20px" style="cursor: pointer"></td>
                         </tr>
                         </tbody>
                     @endforeach
@@ -91,6 +84,7 @@
                         <th scope="col">Описание</th>
                         <th scope="col">Дата создания</th>
                         <th scope="col">Автор</th>
+                        <th scope="col">Действие</th>
                     </tr>
                     </thead>
                     @foreach($post as $posts)
@@ -101,6 +95,7 @@
                             <td>{{$posts->content}}</td>
                             <td>{{$posts->created_at}}</td>
                             <td>{{$posts->avtor}}</td>
+                            <td><img src="{{asset('Images/delete.png')}}" width="20px" height="20px" style="cursor: pointer"></td>
                         </tr>
                         </tbody>
                     @endforeach
@@ -117,6 +112,7 @@
                         <th scope="col">Имя(кто оставил отзыв)</th>
                         <th scope="col">Отзыв</th>
                         <th scope="col">Дата опубликования</th>
+                        <th scope="col">Действие</th>
                     </tr>
                     </thead>
                     @foreach($review as $reviews)
@@ -127,6 +123,7 @@
                             <td>{{$reviews->name}}</td>
                             <td>{{$reviews->reviews}}</td>
                             <td>{{$reviews->created_at}}</td>
+                            <td><img src="{{asset('Images/delete.png')}}" width="20px" height="20px" style="cursor: pointer"></td>
                         </tr>
                         </tbody>
                     @endforeach

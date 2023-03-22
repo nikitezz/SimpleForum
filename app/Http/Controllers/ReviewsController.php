@@ -9,7 +9,7 @@ class ReviewsController extends Controller
 {
     public function index(){
         $reviews = new Reviews();
-        $review = Reviews::all();
+        $review = Reviews::orderBy('id','desc')->get();
         return view('Reviews.index', compact([
             'review',
         ]));

@@ -42,6 +42,10 @@
                 <input type="text" class="form-control" id="name" name="name" placeholder="Иван" value="{{old('name')}}">
             </div>
             <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Фамилия</label>
+                <input type="text" class="form-control" id="surname" name="surname" placeholder="Иванов" value="{{old('surname')}}">
+            </div>
+            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Адрес электронной почты</label>
                 <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="ivanov@gmail.com" value="{{old('email')}}">
                 <div id="emailHelp" class="form-text" style="color:gray;">Мы никогда не будем делиться вашей электронной почтой с кем-либо еще.

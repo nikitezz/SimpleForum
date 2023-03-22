@@ -19,6 +19,9 @@
         .card{
             border: 1px solid gray;
         }
+        .border-green{
+            border: 1px solid greenyellow;
+        }
     </style>
 </head>
 <body>
@@ -59,19 +62,19 @@
     <div class="navbar navbar-dark bg-dark box-shadow">
         <div class="container d-flex justify-content-between">
             <a href="#" class="navbar-brand d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-                <strong>ForumCode</strong>
+                <strong>&lt;/&gt;ForumCode</strong>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
-        <div class="mt-2">
+        <div class="mt-1">
             @if(\Illuminate\Support\Facades\Auth::check())
-
-                <a href="{{route('profile')}}"><p style="color: white;" >{{auth()->user()->name}}</p></a>
+                <a href="{{route('profile')}}"><img src="{{asset('Images/users.png')}}" style="width:40px; height: 35px;cursor: pointer"></a>
+                <h6 class="text-white">{{auth()->user()->name}}</h6>
             @else
-                <p style="color: white;">Гость</p>
+                <img src="{{asset('Images/users.png')}}" style="width: 35px; height: 35px;cursor: pointer">
+                <h6 class="text-white">Гость</h6>
             @endif
         </div>
     </div>
@@ -82,36 +85,36 @@
             <div class="container">
                 <h1 class="jumbotron-heading">ForumCode</h1>
                 <p class="lead text-muted">Что-то короткое и важное о коллекции ниже — ее содержании, создатели и т. д. Сделайте это кратким и приятным, но не слишком коротким, чтобы люди просто не пропустили его полностью.</p>
-                @if(\Illuminate\Support\Facades\Auth::check())
-                    <a href="{{route('create')}}" class="btn btn-primary my-2">Поделиться постом</a>
-                @endif
-                    <a href="{{route('reviews')}}" class="btn btn-secondary my-2">Отзывы</a>
+                <a href="#" class="btn btn-primary my-2 ">Инструкция</a>
+                <a href="{{route('reviews')}}" class="btn btn-secondary my-2">Отзывы</a>
                 </p>
             </div>
         </section>
-        <div class="album py-5 bg-light">
+        <div class="album py-2 bg-light">
             <div class="container">
-                @if(\Illuminate\Support\Facades\Auth::check())
-                    @foreach($post as $posts)
-                        <div class="card mt-4">
-                            <h6 class="card-header">ForumCode</h6>
+                <h4 class="jumbotron-heading">Новости</h4>
+                @foreach($post as $posts)
+                    <div class="card mt-4">
+                       <h6 class="card-header">ForumCode</h6>
                             <div class="card-body">
                                 <h5 class="card-title">{{$posts->title}}</h5>
                                 <p class="card-text">{{$posts->content}}</p>
                                 <p class="card-text">Автор: {{$posts->avtor}}</p>
-                                <a href="#" class="btn btn-primary" onclick="alert('Благодарим, что оценили!')">Нравится</a><br>
+                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="alert('Вы оценили отзыв!')">Нравится</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="alert('Комментарии пока оставить нельзя!')">Комментарии</button>
+                                <br>
                                 <small class="text-muted">{{$posts->getPostDate()}}</small>
                             </div>
-                        </div>
-                    @endforeach
-                @else
-                    <h3 class="jumbotron-heading">Для просмотра постов, нужно зарегистрироваться!</h3>
-                @endif
+                    </div>
+                @endforeach
+                <div class="col-md-12 mt-4">
+                    {{$post->links()}}
+                </div>
             </div>
         </div>
 
     </main>
-    <footer class="text-muted">
+    <footer class="text-muted mt-5">
         <div class="container">
             <p class="float-right">
                 <a href="#">Вверх</a>

@@ -12,8 +12,9 @@ class PostsController extends Controller
     }
     public function store(Request $request){
         $request->validate([
-            'title'=>'required|max:25',
-            'content'=>'required|max:250',
+            'title'=>'required|max:50',
+            'title'=>'required|max:50',
+            'content'=>'required|max:1000',
             'avtor'=>'required',
         ]);
         Posts::create([
@@ -21,6 +22,6 @@ class PostsController extends Controller
             'content'=>$request->input('content'),
             'avtor'=>$request->input('avtor'),
         ]);
-        return redirect('home');
+        return redirect('profile');
     }
 }

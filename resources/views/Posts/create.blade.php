@@ -38,15 +38,15 @@
             @csrf
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Название</label>
-                <input type="text" class="form-control" id="title" name="title">
+                <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Контент</label>
-                <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+                <textarea class="form-control" id="content" name="content" rows="3" value="{{old('content')}}"></textarea>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Укажите автора поста</label>
-                <input type="text" class="form-control" id="avtor" name="avtor">
+                <input type="text" class="form-control" id="avtor" name="avtor" value="{{auth()->user()->name}} {{auth()->user()->surname}}" readonly>
             </div>
             <button type="submit" class="btn btn-primary">Создать</button>
         </form>

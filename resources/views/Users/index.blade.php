@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Профиль: {{auth()->user()->name}}</title>
+    <title>Профиль</title>
 </head>
 <body>
 <div class="wrapper">
@@ -25,8 +25,7 @@
         <div class="navbar navbar-dark bg-dark box-shadow">
             <div class="container d-flex justify-content-between">
                 <a href="#" class="navbar-brand d-flex align-items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-                    <strong>ForumCode</strong>
+                    <strong>&lt;/&gt;ForumCode</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -36,12 +35,21 @@
     </header>
     <main role="main">
         <section class="jumbotron text-center">
-            <img src="{{asset('Images/1.jpg')}}" alt="..." class="rounded-circle" style="width: 80px; height:80px">
+            <img src="{{asset('Images/user.png')}}" alt="..." class="rounded-circle" style="width: 80px; height:80px; border: 1px solid darkmagenta">
             <div class="mt-3">
                 <h6 class="text-black">Имя: {{auth()->user()->name}}</h6>
+                <h6 class="text-black">Фамилия: {{auth()->user()->surname}}</h6>
                 <h6 class="text-black">Email: {{auth()->user()->email}}</h6>
                 <button type="submit" class="btn btn-sm btn-outline-secondary">Редактиваровать данные</button>
+                <div class="mt-1">
+                    <a href="{{route('logout')}}"  class="btn btn-sm btn-outline-secondary">Выйти с аккаунта</a>
+                </div>
                 <h6 class="text-black">_____</h6>
+            </div>
+        </section>
+        <section class=" text-center">
+            <div class="container">
+                <a href="{{route('create')}}" class="btn btn-primary ">Опубликовать пост</a>
             </div>
         </section>
     </main>
