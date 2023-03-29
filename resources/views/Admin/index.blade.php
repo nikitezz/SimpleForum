@@ -67,7 +67,7 @@
                             <td>{{$users->email}}</td>
                             <td>{{$users->password}}</td>
                             <td>{{$users->is_admin}}</td>
-                            <td><img src="{{asset('Images/delete.png')}}" width="20px" height="20px" style="cursor: pointer"></td>
+{{--                            <td><a href="{{route('edit', ['post'=>$post->id])}}"><img src="{{asset('Images/delete.png')}}" width="20px" height="20px" style="cursor: pointer"></a></td>--}}
                         </tr>
                         </tbody>
                     @endforeach
@@ -95,7 +95,17 @@
                             <td>{{$posts->content}}</td>
                             <td>{{$posts->created_at}}</td>
                             <td>{{$posts->avtor}}</td>
-                            <td><img src="{{asset('Images/delete.png')}}" width="20px" height="20px" style="cursor: pointer"></td>
+                            <td>
+                                <form action="{{ route('posts.destroy', $posts->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn"><img src="{{asset('Images/delete.png')}}" width="20px" height="20px" style="cursor: pointer">
+                                    </button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="{{route('posts.edit',$posts->id)}}"><img src="{{asset('Images/pen.png')}}" alt="" width="20px" height="20px" style="cursor: pointer"></a>
+                            </td>
                         </tr>
                         </tbody>
                     @endforeach

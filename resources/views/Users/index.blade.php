@@ -42,7 +42,7 @@
                 <h6 class="text-black">Email: {{auth()->user()->email}}</h6>
                 <button type="submit" class="btn btn-sm btn-outline-secondary">Редактиваровать данные</button>
                 <div class="mt-1">
-                    <a href="{{route('logout')}}"  class="btn btn-sm btn-outline-secondary">Выйти с аккаунта</a>
+                    <a href="{{route('logout')}}"  class="btn btn-sm btn-outline-danger">Выйти с аккаунта</a>
                 </div>
                 <h6 class="text-black">_____</h6>
             </div>

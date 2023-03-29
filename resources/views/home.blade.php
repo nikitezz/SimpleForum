@@ -40,7 +40,9 @@
                         <li><a href="#" class="text-white">Следите за новостями на GitHub</a></li>
                         <li><a href="https://instagram.com/nikitezzz?igshid=YmMyMTA2M2Y=" class="text-white">Мы в Instagram</a></li>
                         <li><a href="" class="text-white">Напишите нам</a></li>
-                        <li><a href="{{route('mail')}}" class="text-white">Оставьте свой отзыв</a></li>
+                        @if(\Illuminate\Support\Facades\Auth::check())
+                            <li><a href="{{route('mail')}}" class="text-white">Оставьте свой отзыв</a></li>
+                        @endif
                         <hr style="background-color: white;">
                         @if(\Illuminate\Support\Facades\Auth::check())
                             <li><a href="{{route('logout')}}" class="text-white">Выйти с аккаунта</a></li>

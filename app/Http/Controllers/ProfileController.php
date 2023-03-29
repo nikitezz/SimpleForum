@@ -14,4 +14,9 @@ class ProfileController extends Controller
             'user',
         ]));
     }
+    public function udpateUserProfile(Request $request, $id){
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        return redirect('profile')->with('success','Профиль успешно обновлён!');
+    }
 }
